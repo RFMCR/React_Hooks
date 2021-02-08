@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
+import Header from "./components/Header";
+import Characters from "./components/Characters";
+import ThemeContext from "./context/ThemeContext";
 
 function App() {
+  // const [darkmode, setdarkmode] = useState(false);
+  const [context, setcontext] = useState("light");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeContext.Provider value={[context, setcontext]}>
+      {/* <div className={darkmode ? "App light" : "App dark"}> */}
+      <div className={`App ${ThemeContext}`}>
+        {/* <Header mode={darkmode} setmode={(mode) => setdarkmode(mode)} /> */}
+        <Header />
+        <hr />
+        <Characters />
+      </div>
+    </ThemeContext.Provider>
   );
 }
 
