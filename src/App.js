@@ -3,6 +3,10 @@ import React, { useState } from "react";
 import Header from "./components/Header";
 import Characters from "./components/Characters";
 import ThemeContext from "./context/ThemeContext";
+import { createBrowserHistory } from "history";
+export const history = createBrowserHistory({
+  basename: process.env.PUBLIC_URL,
+});
 
 function App() {
   // const [darkmode, setdarkmode] = useState(false);
